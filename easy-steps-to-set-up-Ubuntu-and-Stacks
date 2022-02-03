@@ -1,0 +1,112 @@
+# This script documents 
+# how to install Windows Subsystem for Linux (Ubuntu) in your Windows 10 or higher computer
+# how to setup your Ubuntu 
+# how to install Stacks 2.60 ; and
+# how to manipulate your $PATH variable
+
+# Download Ubuntu application in the Microsoft Store
+# set-up you username and password (invisible)
+
+# you might see some errors <add something to this>
+
+# after setting up, install Windows Terminal application in your computer
+# this application allows you to have multiple windows of ubuntu terminal 
+
+# Now that you have your Ubuntu ready for set-up
+# Open Ubuntu in your Windows Terminal and check your present working directory
+
+$ pwd
+
+# You will notice that your pwd looks something like this /mnt/c/Users/mendiomi
+# This mean that your root directory starts from /mnt/path/to/your/files
+
+## Setting up your Ubuntu
+
+$ sudo apt-get update -y
+$ sudo apt install build-essential
+
+# we are basically installing all the updates and essential packages in your ubuntu. YES to all installation questions.
+
+# here are some of the essential packages for Stacks 2.60, so we are going to install it now:
+
+# install gpp
+$ sudo apt-get install -y gpp
+
+# install Zlib compression
+$ sudo apt-get install zlib1g-dev 
+
+# Now that your Ubuntu is ready
+
+## Let's install Stacks version 2.60
+
+# Download the the tar.gz file of Stacks here: https://catchenlab.life.illinois.edu/stacks/
+# Move tar.gz file to your desired folder
+# Go to your ubuntu terminal and go to the directory where you placed your tar.gz
+
+# run commands
+
+# decompress file
+$ tar xfvz stacks-2.60.tar.gz
+$ cd stacks-2.60/
+$ ./configure --prefix=/mnt/path/to/your/desired/directory
+$ make -j 8
+
+# check executables and other files in your directory
+$ ls
+# you should see all of the files and executables in the directory
+
+# Now, try if you can call out the executables
+
+$ ustacks
+
+# If if does not work, try including the root directories
+
+$ /mnt/path/to/your/desired/directory/ustacks
+
+# You should see the program information/manual appearing on your terminal
+
+# Because if is hard to call your prgrams with long directories
+
+## This is how to set your $PATH or environment so you can call your programs even you are not in the current directory where you put them
+
+# Terporarily manipulate your $PATH variable
+
+$ echo $PATH
+> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/GCsolution/Program:/mnt/c/GCMSSO~1/Program:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/mendiomi/AppData/Local/Microsoft/WindowsApps:/snap/bin
+
+$ PATH=$PATH:/opt/bin
+$ echo $PATH
+> echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/GCsolution/Program:/mnt/c/GCMSSO~1/Program:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/mendiomi/AppData/Local/Microsoft/WindowsApps:/snap/bin:/opt/bin
+# You will see at that you added something at the end
+
+# Now try it using your current working directory
+
+$ PATH=$PATH:/mnt/c/Users/mendiomi/installation/stacks-2.60
+$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/GCsolution/Program:/mnt/c/GCMSSO~1/Program:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/mendiomi/AppData/Local/Microsoft/WindowsApps:/snap/bin:/opt/bin:/mnt/c/Users/mendiomi/installation/stacks-2.60
+# You temporarily set the $PATH variable on your current directory
+
+# Now, try to go to the root directory
+
+$ cd ~
+
+# and call your Stacks programs (ustacks, process_radtags, cstacks)
+
+$ process_radtags
+
+# You should see the manual of process_radtags
+
+# We can permanently change the $PATH variable by manipulating the .bashrc file 
+
+# open the nano text file editor and paste the path of the directory where the executables are located 
+$ nano .bashrc
+
+# Go to the bottom of the file and paste the path (PATH=$PATH:/mnt/c/Users/mendiomi/installation/stacks-2.60)
+
+# Write out (^O) the file (save) and exit.
+# Create another ubuntu windows and try to call your programs
+# done
+
+
+
