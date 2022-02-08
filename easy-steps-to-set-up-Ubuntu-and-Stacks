@@ -107,4 +107,18 @@ $ nano .bashrc
 # done
 
 
+## additional commands for setting up Ubuntu
+## How to mount your external drive (network drives) on WSL Ubuntu
+
+# create a directory
+
+$ mkdir /mnt/Z
+
+# mount the drive
+
+$ sudo mount -t drvfs M: /mnt/Z
+
+# run this to finalise the mounting
+
+# sudo mount -a
 
