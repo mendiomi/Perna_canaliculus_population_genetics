@@ -96,19 +96,13 @@ $ process_radtags -p 03_raw_cat/try/ -o ../04_clean/ -b 01_keys/SQ1745_key.txt -
 ## RUNNING fastqc
 
 # install fastqc
-
 $ sudo apt install fastqc
-
 # check if you installed fastqc
-
 $ fastqc
-
 # if you are getting a java error, install Xming software
 
 # running fastqc
-
 $ fastqc /your/input/dir/*gz -o /your/output/dir
-
 # points to check in the fastqc results:
 # if you removed all you adapter contamination
 # if all your sequences are at the same length because it is important in the Stacks pipeline
