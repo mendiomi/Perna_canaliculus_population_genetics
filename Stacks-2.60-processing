@@ -31,7 +31,8 @@ $ process_radtags -p 01_raw/SQ1742/Illumina/cat/ -o 03_raw_demultiplexed/ -b bar
 # you can look up the manual to know what are those commands do
 
 # RUN 1
-#demultiplexing trial with no adapter filter
+# demultiplexing trial with no adapter filter
+# using only one enzyme
 
 $ process_radtags -p 03_raw_cat/try/ -o ../02_clean/ -b 01_keys/SQ1745_key.txt -e pstI -r -c -q
 
@@ -47,13 +48,58 @@ $ process_radtags -p 03_raw_cat/try/ -o ../02_clean/ -b 01_keys/SQ1745_key.txt -
 # 682366558 retained reads (93.6%)
 
 # RUN 2
-# using universal illumina adapters 
+# using universal illumina adapters for adapter cleanup
+# using 2 restriction enzymes
 
 $ process_radtags -p 03_raw_cat/try/ -o ../03_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG
 
 # results: 
 
+# 728826350 total sequences
+# 277056779 reads contained adapter sequence (37.9%) #removing reads with attached adapter sequences
+# 66186288 barcode not found drops (9.1%)
+#  1603974 low quality read drops (0.2%)
+#  1877921 RAD cutsite not found drops (0.3%)
+# 382101388 retained reads (52.3%)
+
 # RUN 3 
 # using pstI and mspI common (Forward) adapters
+# using 2 restriction enzymes 
+
+# results:
+# 728826350 total sequences
+# 277056779 reads contained adapter sequence (38.0%)
+# 66186288 barcode not found drops (9.1%)
+#  1603974 low quality read drops (0.2%)
+#  1877921 RAD cutsite not found drops (0.3%)
+# 382101388 retained reads (52.4%)
 
 $ process_radtags -p 03_raw_cat/try/ -o ../04_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC --adapter_2 CGAGATCGGAAGAGCGGACTTTAAGC
+
+## RUNNING fastqc
+
+# install fastqc
+
+$ sudo apt install fastqc
+
+# check if you installed fastqc
+
+$ fastqc
+
+# if you are getting a java error, install Xming software
+
+# running fastqc
+
+$ fastqc /your/input/dir/*gz -o /your/output/dir
+
+# points to check in the fastqc results:
+# if you removed all you adapter contamination
+# if all your sequences are at the same length because it is important in the Stacks pipeline
+
+# RUN 4 (final trial run)
+# use the illumina universal adapter 
+# truncate reads at the size of 91bp
+
+# process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
+
+
