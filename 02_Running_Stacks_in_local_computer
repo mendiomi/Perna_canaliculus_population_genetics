@@ -110,7 +110,7 @@ $ fastqc /your/input/dir/*gz -o /your/output/dir
 # use the illumina universal adapter 
 # truncate reads at the size of 91bp
 
-# process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
+$ process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
 # results show about 35% retained reads (280M reads for each sequence data), about 30% dropped for low quality reads
 
 
