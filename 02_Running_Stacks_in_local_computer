@@ -116,11 +116,6 @@ $ process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt -
 
 ## ACTUAL RUN
 
-# I concatenated all my sequences into a single large fastq file (and all the barcode files into a file) using cat command
-# 1412 individuals in total
-# 1416 barcodes (there are five AN11 barcodes because it was used as positive control)
-
-$ process_radtags -p 03_raw_cat/cat/ -o ../02_clean/ -b 01_keys/pcanaliculus_barcodes.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
  
 
 
