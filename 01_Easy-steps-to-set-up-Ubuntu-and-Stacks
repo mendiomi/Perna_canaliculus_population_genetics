@@ -59,11 +59,11 @@ $ ustacks
 
 # If if does not work, try including the root directories
 
-$ /mnt/path/to/your/desired/directory/ustacks
+$ /mnt/path/to/directory/where/you/installed/stacks-2.60/ustacks
 
 # You should see the program information/manual appearing on your terminal
 
-# Because if is hard to call your prgrams with long directories
+# Because it is hard to call your prgrams with long directories
 
 ## This is how to set your $PATH or environment so you can call your programs even you are not in the current directory where you put them
 
