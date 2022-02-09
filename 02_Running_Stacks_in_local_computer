@@ -1,6 +1,6 @@
 ## Stack 2.60 (in local computer)
 # using the program process_radtags
-# this script will help you to demultiplex your sequence files
+# this script will help you to demultiplex your sequence data
 # clean your sequence data from low quality reads and adaptor contamination
 
 # If you have 2 or more lanes of sequence data, you need to concatenated them into a single fastq.gz file
@@ -111,5 +111,16 @@ $ fastqc /your/input/dir/*gz -o /your/output/dir
 # truncate reads at the size of 91bp
 
 # process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
+# results show about 35% retained reads (280M reads for each sequence data), about 30% dropped for low quality reads
+
+
+## ACTUAL RUN
+
+# I concatenated all my sequences into a single large fastq file (and all the barcode files into a file) using cat command
+# 1412 individuals in total
+# 1416 barcodes (there are five AN11 barcodes because it was used as positive control)
+
+$ process_radtags -p 03_raw_cat/cat/ -o ../02_clean/ -b 01_keys/pcanaliculus_barcodes.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
+ 
 
 
