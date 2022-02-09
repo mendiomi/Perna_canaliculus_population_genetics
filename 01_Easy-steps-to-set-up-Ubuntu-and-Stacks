@@ -116,7 +116,7 @@ $ mkdir /mnt/Z
 
 # mount the drive
 
-$ sudo mount -t drvfs M: /mnt/Z
+$ sudo mount -t drvfs '\\vuwstocoissrin1.vuw.ac.nz\SBS_Moana_01' /mnt/Z/
 
 # run this to finalise the mounting
 
