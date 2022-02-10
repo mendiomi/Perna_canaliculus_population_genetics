@@ -115,7 +115,32 @@ $ process_radtags -p 03_raw_cat/try/ -o ../05_clean/ -b 01_keys/SQ1745_key.txt -
 
 
 ## ACTUAL RUN
+# run for evey sequence batch
+# SQ1742
+# SQ1743
+# SQ1744
+# SQ1745
+# using different barcode files
 
- 
+$ process_radtags -p 03_raw_cat/SQ1743/ -o ../02_clean/SQ1743/ -b 01_keys/SQ1743_key.txt --renz_1 pstI --renz_2 mspI -r -c -q --adapter_1 AGATCGGAAGAG -t 91
 
 
+### DENOVO MAP
+# Optimizing parameter m in denovo_map.pl 
+# using local computer
+
+# before you start
+$ cp denovo_map.pl from the installtion directory (scripts/denovo_map.pl) into the main installation directory (/mnt/c/Users/mendiomi/installation/stacks-2.60/)
+# edit the file
+$ nano deno_map.pl
+# change the my $exe_path with the installation directory path
+# my $dry_run      = false;
+# my $exe_path     = "/mnt/c/Users/mendiomi/installation/stacks-2.60/;
+# my $out_path     = "";
+
+# now
+# make directories from m1 to m10
+$ mkdir -p m{1..10}
+
+# running m for 1 to 10
+$ for i in {1..10}; do denovo_map.pl --samples 02_clean/optimization_samples --popmap 02_clean/optimization_samples/popmap_optimization.txt -o 03_optimization/m$i -m $i -M 2 -n 2 -T 10; done
