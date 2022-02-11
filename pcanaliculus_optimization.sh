@@ -26,3 +26,4 @@ do
 denovo_map.pl --samples $IN --popmap $POPMAP/popmap_optimization.txt -o $OUT/m$i -m $i -M 2 -n 2 -T 24; 
 done
 
+
